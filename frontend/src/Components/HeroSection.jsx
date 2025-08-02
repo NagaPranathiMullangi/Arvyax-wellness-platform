@@ -1,14 +1,5 @@
-// src/components/HeroSection.jsx
 import React, { useEffect, useRef } from "react";
-
 import image1 from "../assets/image1.jpg";
-//import image2 from "../assets/arvyax2.jpeg";
-//import image3 from "../assets/arvyax3.jpeg";
-//import image4 from "../assets/arvyax4.jpg";
-//import image5 from "../assets/arvyax5.jpg";
-
-//const image1 =
-//"https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg?auto=compress&cs=tinysrgb&w=400";
 
 const image2 =
   "https://mapmygenome.in/cdn/shop/articles/The_Benefits_of_Yoga_for_Mind_and_Body_-_Enhancing_Health_and_Wellness.webp?v=1718860676";
@@ -45,14 +36,19 @@ export default function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className="flex overflow-x-auto scroll-smooth w-full whitespace-nowrap no-scrollbar">
+      className="flex overflow-x-auto scroll-smooth w-full h-[60vh] whitespace-nowrap no-scrollbar">
       {images.map((img, idx) => (
-        <img
+        <div
           key={idx}
-          src={img}
-          alt={`hero-${idx}`}
-          className="min-w-full h-[450px] object-cover"
-        />
+          className="min-w-full h-[60vh] flex-shrink-0 flex items-center justify-center">
+          <div className="w-[90vw] aspect-[16/6] flex items-center justify-center">
+            <img
+              src={img}
+              alt={`hero-${idx}`}
+              className="w-full h-full object-contain"
+            />
+          </div>
+        </div>
       ))}
     </section>
   );

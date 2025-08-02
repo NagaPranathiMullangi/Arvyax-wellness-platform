@@ -1,5 +1,4 @@
 import React from "react";
-// Importing social media icons from react-icons
 import {
   FaFacebookF,
   FaInstagram,
@@ -7,88 +6,88 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa";
 
-// Functional component: Footer
 export default function Footer() {
   return (
-    // Footer wrapper with background color and padding
-    <footer className="bg-[#ce796b] text-white pt-10 pb-6 px-4 sm:px-8">
-      {/* Main footer container with responsive grid layout */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-        {/* About Us Section */}
-        <div className="flex flex-col">
-          <h3 className="text-lg font-semibold mb-3 text-white">About Us</h3>
-          <p className="text-sm leading-6 flex-1">
-            Arvyax Wellness Platform is dedicated to helping you achieve mental
-            and physical well-being through guided yoga and meditation sessions.
+    <footer className="bg-[#ce796b] text-white pt-6 pb-4 px-4 sm:px-6 md:px-8">
+      {/* Main Footer Content */}
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+        {/* About Us */}
+        <div>
+          <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
+            About Us
+          </h3>
+          <p className="text-sm leading-relaxed">
+            Arvyax Wellness Platform helps you achieve mental and physical
+            well-being through guided yoga and meditation.
           </p>
         </div>
 
-        {/* Contact Us Section */}
-        <div className="flex flex-col">
-          <h3 className="text-lg font-semibold mb-3 text-white">Contact Us</h3>
+        {/* Contact */}
+        <div>
+          <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
+            Contact Us
+          </h3>
           <p className="text-sm">Email: support@arvyax.com</p>
           <p className="text-sm">Phone: +91 98765 43210</p>
-          <p className="text-sm">Address: Hyderabad, Telangana, India</p>
+          <p className="text-sm">Hyderabad, Telangana, India</p>
         </div>
 
-        {/* Quick Navigation Links */}
-        <div className="flex flex-col">
-          <h3 className="text-lg font-semibold mb-3 text-white">Quick Links</h3>
-          <ul className="text-sm space-y-2">
-            {/* Each link navigates to a specific route with hover effects */}
+        {/* Quick Links */}
+        <div>
+          <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
+            Quick Links
+          </h3>
+          <ul className="text-sm space-y-1.5">
             <li>
-              <a href="/" className="hover:text-[#f0ebd8] hover:font-bold">
+              <a href="/" className="hover:text-[#f0ebd8]">
                 Home
               </a>
             </li>
             <li>
-              <a
-                href="/register"
-                className="hover:text-[#f0ebd8] hover:font-bold">
+              <a href="/register" className="hover:text-[#f0ebd8]">
                 Register
               </a>
             </li>
             <li>
-              <a href="/login" className="hover:text-[#f0ebd8] hover:font-bold">
+              <a href="/login" className="hover:text-[#f0ebd8]">
                 Login
               </a>
             </li>
             <li>
-              <a
-                href="/dashboard"
-                className="hover:text-[#f0ebd8] hover:font-bold">
+              <a href="/dashboard" className="hover:text-[#f0ebd8]">
                 Dashboard
               </a>
             </li>
           </ul>
         </div>
 
-        {/* Social Media Links */}
-        <div className="flex flex-col">
-          <h3 className="text-lg font-semibold mb-3 text-white">Follow Us</h3>
-          <div className="flex space-x-4 text-white text-xl">
-            {/* Social media icons with hover effects */}
-            <a href="#" className="hover:text-[#f0ebd8] hover:text-2xl">
+        {/* Social Links */}
+        <div>
+          <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
+            Follow Us
+          </h3>
+          <div className="flex space-x-4 text-xl">
+            <a href="#" className="hover:text-[#f0ebd8]">
               <FaFacebookF />
             </a>
-            <a href="#" className="hover:text-[#f0ebd8] hover:text-2xl">
+            <a href="#" className="hover:text-[#f0ebd8]">
               <FaInstagram />
             </a>
-            <a href="#" className="hover:text-[#f0ebd8] hover:text-2xl">
+            <a href="#" className="hover:text-[#f0ebd8]">
               <FaTwitter />
             </a>
-            <a href="#" className="hover:text-[#f0ebd8] hover:text-2xl">
+            <a href="#" className="hover:text-[#f0ebd8]">
               <FaLinkedinIn />
             </a>
           </div>
         </div>
       </div>
 
-      {/* Divider line */}
-      <hr className="my-6 border-white" />
+      {/* Divider */}
+      <hr className="my-4 md:my-6 border-white opacity-60" />
 
-      {/* Footer Bottom Text with current year */}
-      <p className="text-center text-sm text-white">
+      {/* Bottom Note */}
+      <p className="text-center text-xs sm:text-sm text-white">
         &copy; {new Date().getFullYear()} Arvyax Wellness Platform. All rights
         reserved.
       </p>

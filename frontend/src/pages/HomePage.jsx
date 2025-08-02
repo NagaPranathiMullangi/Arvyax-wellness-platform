@@ -11,7 +11,7 @@ import FeatureSection from "../Components/FeatureSection"; // Section that shows
 function HomePage() {
   return (
     // Container with padding and vertical spacing between sections
-    <div className="px-4 py-2 space-y-3">
+    <div className=" px-4 md:px-10 py-2  space-y-3">
       {/* Render the hero/banner section */}
       <HeroSection />
 

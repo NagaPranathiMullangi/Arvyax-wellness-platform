@@ -1,51 +1,69 @@
-// Importing React to use JSX and create a functional component
-import React from "react";
+import React, { useState } from "react";
+import { FaBars } from "react-icons/fa";
 
-// DashboardHeader component receives two props:
-// - currentView: the current tab/view selected on the dashboard
-// - setCurrentView: function to change the current view
 export default function DashboardHeader({ currentView, setCurrentView }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const navButtons = (
+    <>
+      <button
+        onClick={() => {
+          setCurrentView("all");
+          setMenuOpen(false);
+        }}
+        className={`px-4 py-2 rounded w-full text-left ${
+          currentView === "all" ? "bg-[#735751] text-white" : "bg-[#a78a7f]"
+        }`}>
+        All Sessions
+      </button>
+
+      <button
+        onClick={() => {
+          setCurrentView("my");
+          setMenuOpen(false);
+        }}
+        className={`px-4 py-2 rounded w-full text-left ${
+          currentView === "my" ? "bg-[#735751] text-white" : "bg-[#a78a7f]"
+        }`}>
+        My Sessions
+      </button>
+
+      <button
+        onClick={() => {
+          setCurrentView("editor");
+          setMenuOpen(false);
+        }}
+        className={`px-4 py-2 rounded w-full text-left ${
+          currentView === "editor" ? "bg-[#735751] text-white" : "bg-[#a78a7f]"
+        }`}>
+        Session Editor
+      </button>
+    </>
+  );
+
   return (
-    // Main container for the header, with background color and padding
-    <div className="flex justify-between items-center p-4 bg-[#e7d7c1] ">
-      {/* Title on the left side of the header */}
-      <h2 className="pl-75 text-xl text-black font-semibold">
-        Welcome to the Dashboard
-      </h2>
+    <div className="p-4 bg-[#e7d7c1] text-black">
+      <div className="flex justify-between items-center">
+        {/* Title */}
+        <h2 className="text-xl font-semibold">Welcome to the Dashboard</h2>
 
-      {/* Button container on the right side */}
-      <div className="space-x-4 text-black">
-        {/* Button to show "All Sessions" view */}
-        <button
-          // When clicked, update currentView to "all"
-          onClick={() => setCurrentView("all")}
-          // Apply active styling if this is the selected view, else default style
-          className={`px-4 py-2 rounded ${
-            currentView === "all" ? "bg-[#735751] text-white" : "bg-[#a78a7f]"
-          }`}>
-          All Sessions
-        </button>
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex space-x-4">{navButtons}</div>
 
-        {/* Button to show "My Sessions" view (only sessions created by the user) */}
-        <button
-          onClick={() => setCurrentView("my")}
-          className={`px-4 py-2 rounded ${
-            currentView === "my" ? "bg-[#735751] text-white" : "bg-[#a78a7f]"
-          }`}>
-          My Sessions
-        </button>
-
-        {/* Button to open the "Session Editor" to create or edit a session */}
-        <button
-          onClick={() => setCurrentView("editor")}
-          className={`px-4 py-2 rounded ${
-            currentView === "editor"
-              ? "bg-[#735751] text-white" // active style
-              : "bg-[#a78a7f]" // inactive style
-          }`}>
-          Session Editor
-        </button>
+        {/* Mobile Hamburger Menu */}
+        <div className="md:hidden">
+          <button onClick={() => setMenuOpen(!menuOpen)}>
+            <FaBars size={24} />
+          </button>
+        </div>
       </div>
+
+      {/* Mobile Side Menu (slide down under header) */}
+      {menuOpen && (
+        <div className="mt-4 flex flex-col space-y-2 md:hidden">
+          {navButtons}
+        </div>
+      )}
     </div>
   );
 }

@@ -26,9 +26,9 @@ const features = [
 // Functional component to display feature cards
 export default function FeatureSection() {
   return (
-    <section className="py-12 px-4 sm:px-8 lg:px-16 bg-[#ecc8af]">
+    <section className="py-4 px-6 sm:px-4 lg:px-10 bg-[#ecc8af]">
       {/* Section Heading */}
-      <h2 className="text-2xl sm:text-2xl font-bold text-center text-gray-800 mb-12">
+      <h2 className="text-2xl sm:text-2xl font-bold text-center text-gray-800 mb-5">
         Platform Features
       </h2>
 
