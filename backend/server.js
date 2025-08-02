@@ -12,6 +12,13 @@ connectDB();
 // Middleware to parse JSON
 app.use(express.json());
 
+app.use(
+  cors({
+    origin: "*", // or set to your frontend domain
+  })
+);
+
+app.use(express.json());
 // CORS Configuration - Allow all .vercel.app origins
 app.use(
   cors({
@@ -26,6 +33,12 @@ app.use(
     credentials: true,
   })
 );
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*"); // Allow all origins
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  next();
+});
 
 // Routes
 app.use("/api/auth", require("../routes/authRoutes"));
@@ -38,6 +51,7 @@ app.get("/", (req, res) => {
 
 // Export the app for Vercel
 module.exports = app;
+module.exports.handler = serverless(app);
 
 // Start server
 ////const PORT = process.env.PORT || 5000;
