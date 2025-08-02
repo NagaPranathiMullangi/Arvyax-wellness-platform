@@ -38,7 +38,8 @@ app.use(
 // Optional: extra headers
 app.use(
   cors({
-    origin: "https://arvyax-wellness-platform-i3jz.vercel.app",
+    origin:
+      "https://arvyax-wellness-platform-i3jz-rfasw6esk-naga-pranathis-projects.vercel.app",
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   })
