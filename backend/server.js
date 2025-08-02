@@ -1,60 +1,49 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
+const serverless = require("serverless-http");
 const connectDB = require("../config/db");
 
+// Load environment variables
 dotenv.config();
+
+// Initialize Express app
 const app = express();
 
-// Connect DB
+// Connect to MongoDB
 connectDB();
 
-// Middleware to parse JSON
+// Middleware
 app.use(express.json());
 
+// CORS setup: allow all origins (or restrict to vercel.app domains)
 app.use(
   cors({
-    origin: "*", // or set to your frontend domain
-  })
-);
-
-app.use(express.json());
-// CORS Configuration - Allow all .vercel.app origins
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      if (!origin || origin.endsWith(".vercel.app")) {
+    origin: (origin, callback) => {
+      if (
+        !origin ||
+        origin.endsWith(".vercel.app") ||
+        origin === "http://localhost:3000"
+      ) {
         callback(null, true);
       } else {
         callback(new Error("Not allowed by CORS"));
       }
     },
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   })
 );
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*"); // Allow all origins
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  next();
-});
 
 // Routes
 app.use("/api/auth", require("../routes/authRoutes"));
-app.use("/api", require("../routes/sessionRoutes"));
+app.use("/api/session", require("../routes/sessionRoutes"));
 
-// Root route
+// Root endpoint
 app.get("/", (req, res) => {
-  res.send("API is running");
+  res.send("✅ API is running from Vercel serverless!");
 });
 
-// Export the app for Vercel
+// Export as serverless handler
 module.exports = app;
 module.exports.handler = serverless(app);
-
-// Start server
-////const PORT = process.env.PORT || 5000;
-//app.listen(PORT, () => {
-// console.log(`🚀 Server running on http://localhost:${PORT}`);
-//});
