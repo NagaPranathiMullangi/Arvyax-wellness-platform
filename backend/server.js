@@ -2,7 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const serverless = require("serverless-http");
-const connectDB = require("../config/db");
+const connectDB = require("./config/db");
 
 // Load environment variables
 dotenv.config();
@@ -23,7 +23,7 @@ app.use(
       if (
         !origin ||
         origin.endsWith(".vercel.app") ||
-        origin === "http://localhost:3000"
+        origin === "http://localhost:5173"
       ) {
         callback(null, true);
       } else {
@@ -36,8 +36,8 @@ app.use(
 );
 
 // Routes
-app.use("/api/auth", require("../routes/authRoutes"));
-app.use("/api/session", require("../routes/sessionRoutes"));
+app.use("/api/auth", require("./routes/authRoutes"));
+app.use("/api/session", require("./routes/sessionRoutes"));
 
 // Root endpoint
 app.get("/", (req, res) => {
