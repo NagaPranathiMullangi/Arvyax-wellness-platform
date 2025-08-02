@@ -10,21 +10,18 @@ const app = express();
 app.use(express.json());
 
 // CORS Configuration
-const allowedOrigins = [
-  "https://arvyax-wellness-platform-i3jz.vercel.app", // Frontend URL
-];
 
 app.use(
   cors({
     origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
+      if (!origin || origin.endsWith(".vercel.app")) {
         callback(null, true);
       } else {
         callback(new Error("Not allowed by CORS"));
       }
     },
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    credentials: true, // if you're using cookies or Authorization headers
+    credentials: true,
   })
 );
 
