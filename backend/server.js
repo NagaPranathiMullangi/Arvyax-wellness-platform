@@ -47,9 +47,9 @@ app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/session", require("./routes/sessionRoutes"));
 
 // Root endpoint
-app.get("/", (req, res) => {
-  res.send("✅ API is running from Vercel serverless!");
-});
+//app.get("/", (req, res) => {
+// res.send("✅ API is running from Vercel serverless!");
+//});
 
 // Export as serverless handler
 module.exports = app;
