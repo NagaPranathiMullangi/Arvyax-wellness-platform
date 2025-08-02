@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom"; // For navigation and routing
 import axios from "axios"; // HTTP client for API requests
+const API_URL = process.env.REACT_APP_API_URL;
 
 // RegisterPage component for user registration
 export default function RegisterPage() {
@@ -19,7 +20,7 @@ export default function RegisterPage() {
 
     try {
       // Make API call to register endpoint with email and password
-      const res = await axios.post("http://localhost:5000/api/auth/register", {
+      const res = await axios.post(`${API_URL}/api/auth/register`, {
         email,
         password,
       });

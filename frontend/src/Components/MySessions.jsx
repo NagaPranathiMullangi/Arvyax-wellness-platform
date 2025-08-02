@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; // ✅ For programmatic redirection
 import axios from "axios";
 import SessionCard from "./SessionCard";
+const API_URL = process.env.REACT_APP_API_URL;
 
 export default function MySessions() {
   // ✅ State to store the user's sessions fetched from the backend
@@ -16,7 +17,7 @@ export default function MySessions() {
   // ✅ Fetch only the sessions created by the currently logged-in user
   const fetchMySessions = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/my-sessions", {
+      const res = await axios.get(`${API_URL}/api/my-sessions`, {
         headers: { Authorization: `Bearer ${token}` }, // 🛡️ Include token in request
       });
       setSessions(res.data); // ✅ Store fetched sessions in state
@@ -39,8 +40,8 @@ export default function MySessions() {
     // Choose the correct API endpoint based on current session status
     const url =
       session.status === "draft"
-        ? "http://localhost:5000/api/my-sessions/publish" // ✅ Publish the draft
-        : "http://localhost:5000/api/my-sessions/save-draft"; // ✅ Move published back to draft
+        ? `${API_URL}/api/my-sessions/publish` // ✅ Publish the draft
+        : `${API_URL}/api/my-sessions/save-draft`; // ✅ Move published back to draft
 
     try {
       // Send POST request to update the session status

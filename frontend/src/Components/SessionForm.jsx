@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
+const API_URL = process.env.REACT_APP_API_URL;
 
 export default function SessionForm({ sessionId, onSaveSuccess, onClose }) {
   const [formData, setFormData] = useState({
@@ -24,12 +25,9 @@ export default function SessionForm({ sessionId, onSaveSuccess, onClose }) {
 
   const fetchSessionDetails = async () => {
     try {
-      const res = await axios.get(
-        `http://localhost:5000/api/my-sessions/${sessionId}`,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+      const res = await axios.get(`${API_URL}/api/my-sessions/${sessionId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       const session = res.data;
       setFormData({
         title: session.title,
@@ -56,7 +54,7 @@ export default function SessionForm({ sessionId, onSaveSuccess, onClose }) {
   };
 
   const handleSave = async (status) => {
-    const url = `http://localhost:5000/api/my-sessions/${status}`;
+    const url = `${API_URL}/api/my-sessions/${status}`;
     const payload = {
       id: sessionId,
       title: formData.title,

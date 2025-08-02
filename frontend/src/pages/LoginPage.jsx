@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom"; // For page navigation and internal linking
 import axios from "axios"; // For making HTTP requests
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 // LoginPage component handles user login
 export default function LoginPage() {
   // Local state for user input and error handling
@@ -19,7 +21,7 @@ export default function LoginPage() {
 
     try {
       // Send login request to backend
-      const res = await axios.post("http://localhost:5000/api/auth/login", {
+      const res = await axios.post(`${API_URL}/api/auth/login`, {
         email,
         password,
       });

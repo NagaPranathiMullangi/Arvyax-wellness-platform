@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import SessionCard from "./SessionCard"; // Component to display each session
-import SessionForm from "./SessionForm"; // Modal form for creating/editing a session
+import SessionForm from "./SessionForm";
+// Modal form for creating/editing a session
+const API_URL = process.env.REACT_APP_API_URL;
 
 export default function SessionEditor() {
   // State to store all user's sessions
@@ -19,7 +21,7 @@ export default function SessionEditor() {
   // Function to fetch all sessions created by the logged-in user
   const fetchSessions = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/my-sessions", {
+      const res = await axios.get(`${API_URL}/api/my-sessions`, {
         headers: { Authorization: `Bearer ${token}` }, // send token in headers
       });
       setSessions(res.data); // store sessions in state
