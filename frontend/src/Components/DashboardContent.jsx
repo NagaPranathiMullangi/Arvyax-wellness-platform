@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios"; // For making HTTP requests to backend
 import SessionCard from "./SessionCard"; // Reusable card component to display session data
-
+const API_URL = import.meta.env.VITE_API_URL;
 // This component is responsible for displaying all published sessions on the dashboard
 export default function DashboardContent() {
   // Define a state variable to hold the list of sessions
@@ -14,7 +14,7 @@ export default function DashboardContent() {
     const fetchSessions = async () => {
       try {
         // Send GET request to API endpoint to get published sessions
-        const res = await axios.get("http://localhost:5000/api/sessions");
+        const res = await axios.get(`${API_URL}/api/sessions`);
 
         // Store the response data (array of sessions) in state
         setSessions(res.data);

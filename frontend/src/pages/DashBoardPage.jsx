@@ -5,7 +5,6 @@ import DashboardContent from "../Components/DashboardContent"; // Shows general 
 import MySessions from "../Components/MySessions"; // Shows user's draft & published sessions
 import SessionEditor from "../Components/SessionEditor"; // UI for creating/editing sessions
 
-const API_URL = process.env.REACT_APP_API_URL;
 // Main Dashboard component
 export default function Dashboard() {
   // State to track which view is currently active (default is "all")

@@ -3,7 +3,7 @@ import axios from "axios";
 import SessionCard from "./SessionCard"; // Component to display each session
 import SessionForm from "./SessionForm";
 // Modal form for creating/editing a session
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function SessionEditor() {
   // State to store all user's sessions

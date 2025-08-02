@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; // ✅ For programmatic redirection
 import axios from "axios";
 import SessionCard from "./SessionCard";
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function MySessions() {
   // ✅ State to store the user's sessions fetched from the backend
