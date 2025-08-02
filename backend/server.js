@@ -44,7 +44,7 @@ app.use(
   })
 );
 
-// Routes
+// Routes are following
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api", require("./routes/sessionRoutes"));
 
