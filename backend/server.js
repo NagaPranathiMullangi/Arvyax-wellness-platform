@@ -19,22 +19,11 @@ app.use(express.json());
 // CORS setup: allow all origins (or restrict to vercel.app domains)
 app.use(
   cors({
-    origin: (origin, callback) => {
-      if (
-        !origin ||
-        origin.endsWith(".vercel.app") ||
-        origin === "http://localhost:5173"
-      ) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true,
+    origin: "*", // <-- TEMPORARY: allows all origins
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    credentials: true,
   })
 );
-
 // Routes
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/session", require("./routes/sessionRoutes"));
