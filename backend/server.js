@@ -46,7 +46,7 @@ app.use(
 
 // Routes
 app.use("/api/auth", require("./routes/authRoutes"));
-app.use("/api/session", require("./routes/sessionRoutes"));
+app.use("/api", require("./routes/sessionRoutes"));
 
 // Optional root route (for testing)
 app.get("/", (req, res) => {
