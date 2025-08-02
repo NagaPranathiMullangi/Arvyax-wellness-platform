@@ -16,7 +16,7 @@ connectDB();
 // Middleware
 app.use(express.json());
 
-// CORS setup: allow all origins (or restrict to vercel.app domains)
+// CORS configuration
 app.use(
   cors({
     origin: (origin, callback) => {
@@ -35,10 +35,14 @@ app.use(
   })
 );
 
+// Optional: extra headers
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*"); // Allow all origins
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   next();
 });
 
@@ -46,11 +50,11 @@ app.use((req, res, next) => {
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/session", require("./routes/sessionRoutes"));
 
-// Root endpoint
-//app.get("/", (req, res) => {
-// res.send("✅ API is running from Vercel serverless!");
-//});
+// Optional root route (for testing)
+app.get("/", (req, res) => {
+  res.send("✅ API is working!");
+});
 
-// Export as serverless handler
+// Export for serverless
 module.exports = app;
 module.exports.handler = serverless(app);
