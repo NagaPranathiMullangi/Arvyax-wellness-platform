@@ -17,7 +17,7 @@ connectDB();
 app.use(express.json());
 
 // CORS configuration
-app.use(
+/*app.use(
   cors({
     origin: (origin, callback) => {
       if (
@@ -33,12 +33,12 @@ app.use(
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   })
-);
+);*/
 
 // Optional: extra headers
 app.use(
   cors({
-    origin: "https://arvyax-wellness-platform-i3jz.vercel.app",
+    origin: "https://arvyax-wellness-platform-rv5m.vercel.app",
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   })
