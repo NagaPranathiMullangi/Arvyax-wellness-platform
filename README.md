@@ -357,5 +357,5 @@ Allows the **logged-in user** to **publish** a session.
 
 You can explore the deployed version of this API and frontend by visiting the live demo below:
 
-🔗 **Live App**: [https://your-vercel-app-url.vercel.app](https://your-vercel-app-url.vercel.app)
+🔗 **Live App**: [https://arvyax-wellness-platform-rv5m.vercel.app/](https://arvyax-wellness-platform-rv5m.vercel.app/)
 
