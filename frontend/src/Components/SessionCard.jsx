@@ -16,10 +16,11 @@ export default function SessionCard({
 
   return (
     <div
-      className="bg-white border border-[#ffc2d4] rounded-xl p-5 w-full 
-                    shadow-[0_2px_8px_rgba(255,122,158,0.3)] 
-                    hover:shadow-[0_4px_10px_rgba(255,122,158,0.5)] 
-                    transform transition duration-300">
+      className="bg-white border border-[#ffc2d4] rounded-xl p-5 w-full
+                 shadow-[0_2px_8px_rgba(255,122,158,0.3)]
+                 hover:shadow-[0_4px_10px_rgba(255,122,158,0.5)]
+                 transform transition duration-300"
+    >
       {/* Display the session title */}
       <h3 className="text-2xl font-bold text-[#560737] mb-4">
         {session.title}
@@ -31,8 +32,7 @@ export default function SessionCard({
         <span className="text-bold text-gray-800">
           {Array.isArray(session.tags) && session.tags.length > 0
             ? session.tags.join(", ") // Show comma-separated tags
-            : "None"}{" "}
-          // Fallback if no tags available
+            : "None"}
         </span>
       </div>
 
@@ -43,7 +43,8 @@ export default function SessionCard({
           href={session.json_file_url} // URL to the JSON file
           target="_blank" // Open link in a new tab
           rel="noopener noreferrer" // Security best practice
-          className="text-gray-800 underline hover:text-blue-800 text-bold">
+          className="text-gray-800 underline hover:text-blue-800 text-bold"
+        >
           {session.json_file_url}
         </a>
       </div>
@@ -52,15 +53,14 @@ export default function SessionCard({
       <div>
         <p className="mb-2 flex items-start gap-4">
           <span className="text-xl font-bold text-[#7d4f50]">Created: </span>
-          {/* Format date if available, else show N/A */}
           {session.created_at
-            ? new Date(session.created_at).toLocaleString()
+            ? new Date(session.created_at).toLocaleString() // Format creation date
             : "N/A"}
         </p>
         <p className="mb-2 flex items-start gap-4">
           <span className="text-xl font-bold text-[#7d4f50]">Updated: </span>
           {session.updated_at
-            ? new Date(session.updated_at).toLocaleString()
+            ? new Date(session.updated_at).toLocaleString() // Format update date
             : "N/A"}
         </p>
       </div>
@@ -71,8 +71,9 @@ export default function SessionCard({
         {showToggleButton && (
           <button
             onClick={handleToggle} // Call handler to toggle draft/published
-            className="px-3 py-1.5 rounded-md bg-[#e7d7c1] text-black text-md font-medium 
-                       hover:bg-[#B9375E] hover:text-white transition">
+            className="px-3 py-1.5 rounded-md bg-[#e7d7c1] text-black text-md font-medium
+                       hover:bg-[#B9375E] hover:text-white transition"
+          >
             {/* Change label based on current status */}
             {session.status === "draft" ? "Publish" : "Revert to Draft"}
           </button>
@@ -82,8 +83,9 @@ export default function SessionCard({
         {showEditButton && (
           <button
             onClick={onEdit} // Trigger the provided `onEdit` callback
-            className="px-3 py-1.5 rounded-md bg-green-600 text-white text-sm font-medium 
-                       hover:bg-green-700 transition">
+            className="px-3 py-1.5 rounded-md bg-green-600 text-white text-sm font-medium
+                       hover:bg-green-700 transition"
+          >
             Edit
           </button>
         )}
